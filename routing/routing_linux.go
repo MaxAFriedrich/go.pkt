@@ -71,7 +71,7 @@ func Routes() ([]*Route, error) {
 			continue
 		}
 
-		route := &Route{ Default: true }
+		route := &Route{Default: true}
 
 		rtmsg := (*rtmsg)(unsafe.Pointer(&m.Data[0]))
 
@@ -84,19 +84,19 @@ func Routes() ([]*Route, error) {
 			switch a.Attr.Type {
 			case syscall.RTA_SRC:
 				route.SrcNet = &net.IPNet{
-					IP:   net.IP(a.Value),
+					IP: net.IP(a.Value),
 					Mask: net.CIDRMask(
 						int(rtmsg.src_len),
-						len(a.Value) * 8,
+						len(a.Value)*8,
 					),
 				}
 
 			case syscall.RTA_DST:
 				route.DstNet = &net.IPNet{
-					IP:   net.IP(a.Value),
+					IP: net.IP(a.Value),
 					Mask: net.CIDRMask(
 						int(rtmsg.dst_len),
-						len(a.Value) * 8,
+						len(a.Value)*8,
 					),
 				}
 
