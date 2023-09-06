@@ -35,7 +35,6 @@ package routing
 
 import "fmt"
 import "net"
-import "sort"
 import "strings"
 
 type Route struct {
@@ -77,34 +76,6 @@ func (r route_slice) Less(i, j int) bool {
     return true
 }
 
-// Return the route that matches the given destination address.
-func RouteTo(dst net.IP) (*Route, error) {
-    var def *Route
-
-    routes, err := Routes()
-    if err != nil {
-        return nil, fmt.Errorf("Could not get routes: %s", err)
-    }
-
-    sort.Sort(route_slice(routes))
-
-    for _, r := range routes {
-        if r.Default &&
-           r.Iface != nil &&
-           r.Iface.Flags & net.FlagLoopback == 0 {
-            def = r
-            continue
-        }
-
-        if r.DstNet != nil &&
-           r.DstNet.Contains(dst) {
-            return r, nil
-        }
-    }
-
-    return def, nil
-}
-
 // Return the default IPv4 address of a network interface.
 func (r *Route) GetIfaceIPv4Addr() (net.IP, error) {
     iface := r.Iface
@@ -136,8 +107,10 @@ func (r *Route) GetIfaceIPv6Addr() (net.IP, error) {
 
     for _, a := range addrs {
         if ipnet, ok := a.(*net.IPNet); ok {
-            if ip6 := ipnet.IP.To16(); ip6 != nil {
-                return ip6, nil
+            // The best way to check for IPv6 is to convert it to IPv4
+            // and check for nil. Converting an IPv4 to IPv6 will always succeed.
+            if ip4 := ipnet.IP.To4(); ip4 == nil {
+                return ipnet.IP, nil
             }
         }
     }
