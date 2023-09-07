@@ -8,12 +8,12 @@ import "github.com/docopt/docopt-go"
 
 import "github.com/songgao/water"
 
-import "github.com/ghedo/go.pkt/packet"
-import "github.com/ghedo/go.pkt/packet/ipv6"
-import "github.com/ghedo/go.pkt/packet/icmpv6"
-import "github.com/ghedo/go.pkt/packet/tcp"
-import "github.com/ghedo/go.pkt/packet/udp"
-import "github.com/ghedo/go.pkt/layers"
+import "github.com/MaxAFriedrich/go.pkt/packet"
+import "github.com/MaxAFriedrich/go.pkt/packet/ipv6"
+import "github.com/MaxAFriedrich/go.pkt/packet/icmpv6"
+import "github.com/MaxAFriedrich/go.pkt/packet/tcp"
+import "github.com/MaxAFriedrich/go.pkt/packet/udp"
+import "github.com/MaxAFriedrich/go.pkt/layers"
 
 func main() {
 	log.SetFlags(0)

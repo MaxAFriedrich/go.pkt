@@ -35,7 +35,7 @@ import "net"
 
 import "github.com/docopt/docopt-go"
 
-import "github.com/ghedo/go.pkt/routing"
+import "github.com/MaxAFriedrich/go.pkt/routing"
 
 func main() {
 	log.SetFlags(0)

@@ -41,8 +41,8 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/ghedo/go.pkt/filter"
-	"github.com/ghedo/go.pkt/packet"
+	"github.com/MaxAFriedrich/go.pkt/filter"
+	"github.com/MaxAFriedrich/go.pkt/packet"
 )
 
 type Handle struct {

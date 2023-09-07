@@ -34,22 +34,22 @@
 package layers
 
 import (
-	"github.com/ghedo/go.pkt/packet"
-	"github.com/ghedo/go.pkt/packet/arp"
-	"github.com/ghedo/go.pkt/packet/eth"
-	"github.com/ghedo/go.pkt/packet/icmpv4"
-	"github.com/ghedo/go.pkt/packet/icmpv6"
-	"github.com/ghedo/go.pkt/packet/ipv4"
-	"github.com/ghedo/go.pkt/packet/ipv6"
-	"github.com/ghedo/go.pkt/packet/llc"
-	"github.com/ghedo/go.pkt/packet/loopback"
-	"github.com/ghedo/go.pkt/packet/radiotap"
-	"github.com/ghedo/go.pkt/packet/raw"
-	"github.com/ghedo/go.pkt/packet/sll"
-	"github.com/ghedo/go.pkt/packet/snap"
-	"github.com/ghedo/go.pkt/packet/tcp"
-	"github.com/ghedo/go.pkt/packet/udp"
-	"github.com/ghedo/go.pkt/packet/vlan"
+	"github.com/MaxAFriedrich/go.pkt/packet"
+	"github.com/MaxAFriedrich/go.pkt/packet/arp"
+	"github.com/MaxAFriedrich/go.pkt/packet/eth"
+	"github.com/MaxAFriedrich/go.pkt/packet/icmpv4"
+	"github.com/MaxAFriedrich/go.pkt/packet/icmpv6"
+	"github.com/MaxAFriedrich/go.pkt/packet/ipv4"
+	"github.com/MaxAFriedrich/go.pkt/packet/ipv6"
+	"github.com/MaxAFriedrich/go.pkt/packet/llc"
+	"github.com/MaxAFriedrich/go.pkt/packet/loopback"
+	"github.com/MaxAFriedrich/go.pkt/packet/radiotap"
+	"github.com/MaxAFriedrich/go.pkt/packet/raw"
+	"github.com/MaxAFriedrich/go.pkt/packet/sll"
+	"github.com/MaxAFriedrich/go.pkt/packet/snap"
+	"github.com/MaxAFriedrich/go.pkt/packet/tcp"
+	"github.com/MaxAFriedrich/go.pkt/packet/udp"
+	"github.com/MaxAFriedrich/go.pkt/packet/vlan"
 )
 
 // Compose packets into a chain and update their values (e.g. length, payload
