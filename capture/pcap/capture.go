@@ -203,7 +203,6 @@ func (h *Handle) Capture() ([]byte, error) {
 		}
 	}
 
-	return nil, fmt.Errorf("WTF")
 }
 
 // Inject a packet in the packet source.

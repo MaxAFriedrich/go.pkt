@@ -55,16 +55,20 @@ func Compile(filter string, link_type packet.Type, optimize bool) (*Filter, erro
 	filter_str := C.CString(filter)
 	defer C.free(unsafe.Pointer(filter_str))
 
+	// Open a dead pcap handle for the specified link type
 	pcap_type := link_type.ToLinkType()
+	dhandle := C.pcap_open_dead(C.int(pcap_type), 0)
+	if dhandle == nil {
+		return nil, fmt.Errorf("Could not open a dead pcap handle")
+	}
+	defer C.pcap_close(dhandle)
 
-	err := C.pcap_compile_nopcap(
-		C.int(0x7fff), C.int(pcap_type),
-		(*C.struct_bpf_program)(f.Program()),
-		filter_str, C.int(do_optimize), 0xffffffff,
-	)
+	// Compile the filter expression
+	err := C.pcap_compile(dhandle, (*C.struct_bpf_program)(f.Program()), filter_str, C.int(do_optimize), 0xffffffff)
 	if err < 0 {
 		return nil, fmt.Errorf("Could not compile filter")
 	}
 
 	return f, nil
 }
+
